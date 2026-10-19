@@ -1,0 +1,8 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: pick ONE question about the penguins, write the encoding plan (field -> type -> channel), then build the chart.",
+  "width": 300,
+  "height": 300,
+  "data": {"url": "../data/penguins.csv"},
+  "mark": "point"
+}
