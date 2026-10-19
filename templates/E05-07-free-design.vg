@@ -1,0 +1,8 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: 1) write the question your chart answers. 2) Choose a dataset (cars, movies, penguins, seattle-weather) and change `data`. 3) Use an appropriate mark, at least three encoding channels and the right type for every field. 4) Optional: add facet or shape for a fourth dimension.",
+  "width": 300,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "mark": "point"
+}

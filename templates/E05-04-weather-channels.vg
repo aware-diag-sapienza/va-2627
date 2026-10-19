@@ -1,0 +1,8 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: A) maximum temperature over time, color = weather, opacity = precipitation. B) Replace opacity with size and compare: which channel lets you read precipitation better?",
+  "width": 600,
+  "height": 250,
+  "data": {"url": "../data/seattle-weather.csv"},
+  "mark": "point"
+}

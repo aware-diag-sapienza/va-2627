@@ -1,0 +1,12 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: 1) change mark to `bar`: what does each bar now mean? 2) try `tick`, `circle`, `square`. 3) Make a bar chart that IS meaningful for these fields (hint: aggregate one of them and use a discrete field on x).",
+  "width": 300,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative"},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative"}
+  }
+}

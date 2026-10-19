@@ -1,0 +1,18 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: a bar chart of how many products there are per size_category. 1) What order do the bars appear in? 2) Change the field type and/or sort so the order is Small, Medium, Large. 3) Which change actually fixed the order?",
+  "width": 250,
+  "height": 200,
+  "data": {"values": [
+    {"size_category": "Small"}, {"size_category": "Small"}, {"size_category": "Small"},
+    {"size_category": "Small"}, {"size_category": "Small"},
+    {"size_category": "Medium"}, {"size_category": "Medium"}, {"size_category": "Medium"},
+    {"size_category": "Medium"},
+    {"size_category": "Large"}, {"size_category": "Large"}, {"size_category": "Large"}
+  ]},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "size_category", "type": "nominal"},
+    "y": {"aggregate": "count"}
+  }
+}

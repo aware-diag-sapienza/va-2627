@@ -1,0 +1,16 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: 1) write the type of each field (category, value, date, rank) in a table. 2) encode a scatter plot with date on x and value on y; show category with color.",
+  "width": 300,
+  "height": 300,
+  "data": {"values": [
+    {"category": "A", "value": 5.3, "date": "2022-03-01", "rank": 1},
+    {"category": "B", "value": 2.1, "date": "2022-03-02", "rank": 2},
+    {"category": "C", "value": 7.8, "date": "2022-03-03", "rank": 3},
+    {"category": "A", "value": 6.4, "date": "2022-03-04", "rank": 4},
+    {"category": "B", "value": 3.0, "date": "2022-03-05", "rank": 5},
+    {"category": "C", "value": 8.9, "date": "2022-03-06", "rank": 6}
+  ]},
+  "mark": "point",
+  "encoding": {}
+}

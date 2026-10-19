@@ -1,0 +1,19 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: A) scatter plot of sales (x) vs profitMargin (y), colored by region. B) Where does `year` go? Try at least two channels (color, size, column, ...) and keep the one that reads best.",
+  "width": 250,
+  "height": 250,
+  "data": {"values": [
+    {"year": 2018, "region": "North", "sales": 120, "profitMargin": 0.23},
+    {"year": 2019, "region": "North", "sales": 135, "profitMargin": 0.25},
+    {"year": 2020, "region": "North", "sales": 110, "profitMargin": 0.18},
+    {"year": 2018, "region": "South", "sales": 90, "profitMargin": 0.13},
+    {"year": 2019, "region": "South", "sales": 105, "profitMargin": 0.15},
+    {"year": 2020, "region": "South", "sales": 95, "profitMargin": 0.12},
+    {"year": 2018, "region": "East", "sales": 150, "profitMargin": 0.28},
+    {"year": 2019, "region": "East", "sales": 160, "profitMargin": 0.30},
+    {"year": 2020, "region": "East", "sales": 170, "profitMargin": 0.31}
+  ]},
+  "mark": "point",
+  "encoding": {}
+}

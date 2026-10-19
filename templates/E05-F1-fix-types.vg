@@ -1,0 +1,14 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: this chart shows miles per gallon over time, colored by origin and sized by horsepower, but it has TWO type errors. Look at the x axis labels and the size legend, then fix them.",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "mark": {"type": "point", "filled": true, "opacity": 0.5},
+  "encoding": {
+    "x": {"field": "Year", "type": "ordinal"},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
+    "color": {"field": "Origin", "type": "nominal"},
+    "size": {"field": "Horsepower", "type": "nominal"}
+  }
+}

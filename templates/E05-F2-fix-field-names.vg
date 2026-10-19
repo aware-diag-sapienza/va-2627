@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: the chart is empty and no error is shown. Open the data (data/penguins.json), compare the field names, and fix the spec. Field names are case-sensitive.",
+  "width": 300,
+  "height": 300,
+  "data": {"url": "../data/penguins.csv"},
+  "mark": {"type": "point", "filled": true},
+  "encoding": {
+    "x": {"field": "culmen_length", "type": "quantitative", "scale": {"zero": false}},
+    "y": {"field": "Culmen_depth_mm", "type": "quantitative", "scale": {"zero": false}},
+    "color": {"field": "Species", "type": "nominal"}
+  }
+}
