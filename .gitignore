@@ -4,7 +4,8 @@
 __MACOSX/
 .AppleDouble
 .LSOverride
-Icon[]
+Icon[
+]
 
 # Resource forks
 ._*
@@ -25,7 +26,8 @@ Icon[]
 .file
 .disk_label*
 lost+found
-.HFS+ Private Directory Data[]
+.HFS+ Private Directory Data[
+]
 
 # Directories potentially created on remote AFP share
 .AppleDB
@@ -252,3 +254,8 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Your exercises live here and are never committed: this is what makes
+# `git pull` safe. Only the README that explains the folder is tracked.
+workspace/*
+!workspace/README.md
