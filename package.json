@@ -17,7 +17,12 @@
   },
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "list": "node scripts/va.mjs list",
+    "new": "node scripts/va.mjs new",
+    "render": "node scripts/va.mjs render",
+    "render:all": "node scripts/va.mjs render --all",
+    "compile": "node scripts/va.mjs compile",
+    "help": "node scripts/va.mjs help"
   },
   "dependencies": {
     "ajv": "^8.20.0",
