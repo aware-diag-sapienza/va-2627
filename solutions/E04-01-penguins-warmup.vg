@@ -1,0 +1,34 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Question: do heavier penguins have longer flippers, and does the relationship differ by species?",
+  "title": "Heavier penguins have longer flippers, in every species",
+  "width": 350,
+  "height": 300,
+  "data": {
+    "url": "../data/penguins.csv",
+    "format": {
+        "parse": {
+            "culmen_length_mm": "number",
+            "culmen_depth_mm": "number",
+            "flipper_length_mm": "number",
+            "body_mass_g": "number"
+        }
+    }
+  },
+  "mark": {"type": "point", "filled": true, "opacity": 0.7},
+  "encoding": {
+    "x": {
+      "field": "flipper_length_mm",
+      "type": "quantitative",
+      "scale": {"zero": false},
+      "title": "Flipper length (mm)"
+    },
+    "y": {
+      "field": "body_mass_g",
+      "type": "quantitative",
+      "scale": {"zero": false},
+      "title": "Body mass (g)"
+    },
+    "color": {"field": "species", "type": "nominal", "title": "Species"}
+  }
+}
