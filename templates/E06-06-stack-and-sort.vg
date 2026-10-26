@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: 100% stacked bars of the species composition of each island. 1) Normalize the stack to show shares. 2) Sort the islands by number of penguins (by value, not alphabetically).",
+  "width": 300,
+  "height": 300,
+  "data": {"url": "../data/penguins.json"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "island", "type": "nominal"},
+    "y": {"aggregate": "count"},
+    "color": {"field": "species", "type": "nominal"}
+  }
+}

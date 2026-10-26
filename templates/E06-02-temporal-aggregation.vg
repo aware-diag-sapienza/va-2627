@@ -1,0 +1,8 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: mean maximum temperature (temp_max) of each month, one bar per weather type. 1) Put color = weather and look at the bars: why are they misleading when stacked? 2) Fix it with xOffset (grouped bars).",
+  "width": 500,
+  "height": 250,
+  "data": {"url": "../data/seattle-weather.csv"},
+  "mark": "bar"
+}

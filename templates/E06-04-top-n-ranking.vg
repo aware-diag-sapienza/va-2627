@@ -1,0 +1,12 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: bar chart of the mean Rotten Tomatoes rating for the TOP 10 genres, in descending order. 1) Remove movies without a genre. 2) Drop genres with fewer than 20 rated movies (a mean of 3 movies is not a ranking). 3) Show the number of rated movies in the label. Hint: `aggregate` (mean and valid), `filter`, `window` with `rank`.",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "../data/movies.json"},
+  "mark": "bar",
+  "encoding": {
+    "y": {"field": "Major Genre", "type": "nominal"},
+    "x": {"aggregate": "mean", "field": "Rotten Tomatoes Rating", "type": "quantitative"}
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: 1) turn this into a histogram of Horsepower (add `bin`). 2) Compare at least three bin settings (maxbins, step). 3) Which one shows the shape of the distribution best, and why?",
+  "width": 400,
+  "height": 250,
+  "data": {"url": "../data/cars.json"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative"},
+    "y": {"aggregate": "count"}
+  }
+}

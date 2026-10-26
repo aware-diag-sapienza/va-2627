@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: compute the power-to-weight ratio (Horsepower per 1000 lbs) with a `calculate` transform and plot it against Miles_per_Gallon. Some cars have no Horsepower: decide how to handle them.",
+  "width": 350,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "transform": [],
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative"},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative"}
+  }
+}

@@ -15,6 +15,16 @@
 | [E05-07](#e05-07---free-design) | Free design | all |
 | [E05-F1](#e05-f1---fix-the-types) | Fix the types | types |
 | [E05-F2](#e05-f2---fix-the-field-names) | Fix the field names | debugging |
+| [E06-01](#e06-01---histogram-bins) | Histogram bins | bin |
+| [E06-02](#e06-02---temporal-aggregation) | Temporal aggregation | timeUnit, aggregate |
+| [E06-03](#e06-03---derived-field) | Derived field | calculate, filter |
+| [E06-04](#e06-04---top-n-ranking) | Top-N ranking | window, filter |
+| [E06-05](#e06-05---two-ways) | Two ways | field vs view level |
+| [E06-06](#e06-06---stack-and-sort) | Stack and sort | stack, sort |
+| [E06-07](#e06-07---join-aggregate) | Join aggregate | joinaggregate |
+| [E06-08](#e06-08---moving-average) | Moving average | window |
+| [E06-F1](#e06-f1---fix-the-aggregate) | Fix the aggregate | schema errors, sort |
+| [E06-F2](#e06-f2---fix-the-empty-chart) | Fix the empty chart | transform order |
 
 ---
 
@@ -148,5 +158,127 @@
 **Check yourself.** Why is a wrong field name not an error in Vega-Lite? Where would you look first next time?
 
 ![expected](expected/E05-F2-fix-field-names.svg)
+
+---
+
+# P06 - Data transformation
+
+## E06-01 - Histogram bins
+
+**Goal.** Build a histogram and see the effect of the bin size.
+
+1. The template counts cars per distinct Horsepower value. Add `bin` to get a histogram.
+2. Compare at least three settings (`maxbins`, `step`) side by side (`hconcat`).
+3. Which setting shows the shape of the distribution best?
+
+**Check yourself.** What are the symptoms of too few and too many bins?
+
+![expected](expected/E06-01-histogram-bins.svg)
+
+## E06-02 - Temporal aggregation
+
+**Goal.** Mean maximum temperature (`temp_max`) of each month, for each weather type.
+
+1. `x` = month (`timeUnit`), `y` = mean `temp_max`, `color` = `weather`.
+2. Look at the stacked bars: why are they misleading?
+3. Fix it with `xOffset` (grouped bars).
+
+**Check yourself.**
+- What does stacking a mean mean?
+- `timeUnit: month` pools the four years. Is that what you want?
+
+![expected](expected/E06-02-temporal-aggregation.svg)
+
+## E06-03 - Derived field
+
+**Goal.** Power-to-weight ratio against fuel economy.
+
+1. Add a `calculate` transform: horsepower per 1000 lbs, named with `as`.
+2. Some cars have no Horsepower: handle them explicitly.
+3. Plot the ratio (x) against `Miles_per_Gallon` (y).
+
+**Check yourself.** Why put `filter` before `calculate`? What happens to `null / number` in a calculation?
+
+![expected](expected/E06-03-derived-field.svg)
+
+## E06-04 - Top-N ranking
+
+**Goal.** Bar chart of the mean Rotten Tomatoes rating of the top 10 genres, in descending order.
+
+1. Remove movies without a genre.
+2. Keep only genres with at least 20 rated movies.
+3. Rank the genres and keep the top 10 (`window` with `rank`).
+4. Show the number of rated movies in the axis label.
+
+**Check yourself.** Which genre disappears after step 2, and why is including it a bad ranking?
+
+![expected](expected/E06-04-top-n-ranking.svg)
+
+## E06-05 - Two ways
+
+**Goal.** Number of rainy and sunny days per month, built in two ways that must give the same numbers.
+
+- **A** - field-level transforms (`timeUnit` and `aggregate` inside the encoding).
+- **B** - view-level transforms (`calculate` and `aggregate` in `transform`).
+
+**Check yourself.** Which version is easier to read? Which one would you need if you had to filter on the aggregated value?
+
+![expected](expected/E06-05-two-ways.svg)
+
+## E06-06 - Stack and sort
+
+**Goal.** Species composition of each island as 100% stacked bars, islands sorted by size.
+
+1. `stack: normalize`.
+2. Sort the islands by the number of penguins.
+
+**Check yourself.** What is the difference between `sort: "descending"` and `sort: "-y"`? Which question does a normalized stack answer, and which one does it hide?
+
+![expected](expected/E06-06-stack-and-sort.svg)
+
+## E06-07 - Join aggregate
+
+**Goal.** How far is each car from the average of its origin?
+
+1. Add the mean MPG of the origin to each row (`joinaggregate`).
+2. Compute the difference (`calculate`).
+3. Plot one strip per origin.
+
+**Check yourself.** How is `joinaggregate` different from `aggregate`? How many rows do you have after each?
+
+![expected](expected/E06-07-join-aggregate.svg)
+
+## E06-08 - Moving average
+
+**Goal.** Reveal the seasonal trend under the noisy daily values.
+
+1. Turn the spec into two layers: the points and a line.
+2. The line is the 31-day moving average (`window` transform, `frame: [-15, 15]`).
+
+**Check yourself.** Why does `window` need `sort`? What happens at the first and last 15 days?
+
+![expected](expected/E06-08-moving-average.svg)
+
+## E06-F1 - Fix the aggregate
+
+**Goal.** Read a schema error and fix a chart that is wrong even after it renders.
+
+1. The Vega Editor reports an error. Write what it says and what it means.
+2. Fix it. The chart should show mean body mass per island, from heaviest to lightest: is the order right?
+
+**Check yourself.** What does `"sort": "descending"` actually sort?
+
+![expected](expected/E06-F1-fix-aggregate.svg)
+
+## E06-F2 - Fix the empty chart
+
+**Goal.** Debug a transform pipeline step by step.
+
+1. The chart is empty. Comment out the `transform` entries one by one from the bottom: when does data appear?
+2. Fix **two** problems.
+
+**Check yourself.** What is the value of a field that does not exist yet, and how does a comparison with it evaluate?
+
+![expected](expected/E06-F2-fix-empty-chart.svg)
 
 ---

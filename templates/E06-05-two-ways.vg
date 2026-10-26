@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: count the rainy and sunny days of each month (all years pooled) in two ways. A) field-level transforms (timeUnit and aggregate inside the encoding). B) view-level transforms (calculate and aggregate in `transform`). Both charts must show the same numbers.",
+  "data": {"url": "../data/seattle-weather.csv"},
+  "vconcat": [
+    {
+      "title": "A: field-level transforms",
+      "width": 500,
+      "height": 150,
+      "transform": [{"filter": "datum.weather == 'rain' || datum.weather == 'sun'"}],
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"aggregate": "count"},
+        "color": {"field": "weather", "type": "nominal"}
+      }
+    },
+    {
+      "title": "B: view-level transforms",
+      "width": 500,
+      "height": 150,
+      "transform": [{"filter": "datum.weather == 'rain' || datum.weather == 'sun'"}],
+      "mark": "bar",
+      "encoding": {}
+    }
+  ]
+}

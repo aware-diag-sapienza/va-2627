@@ -1,0 +1,12 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: the chart should show the mean body mass of each island, from the heaviest to the lightest. The Vega Editor reports an error: read it, fix it, then check the order of the bars.",
+  "width": 300,
+  "height": 250,
+  "data": {"url": "../data/penguins.json"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "island", "type": "nominal", "sort": "descending"},
+    "y": {"field": "body_mass_g", "type": "quantitative", "aggregate": "avg"}
+  }
+}
