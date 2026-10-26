@@ -1,0 +1,31 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Same encoding with two channels for precipitation: A uses opacity, B uses size.",
+  "data": {"url": "../data/seattle-weather.csv"},
+  "vconcat": [
+    {
+      "title": "A: precipitation as opacity",
+      "width": 600,
+      "height": 180,
+      "mark": {"type": "point", "filled": true},
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "temp_max", "type": "quantitative", "title": "Max temperature (C)"},
+        "color": {"field": "weather", "type": "nominal"},
+        "opacity": {"field": "precipitation", "type": "quantitative"}
+      }
+    },
+    {
+      "title": "B: precipitation as size",
+      "width": 600,
+      "height": 180,
+      "mark": {"type": "point", "filled": true, "opacity": 0.6},
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "temp_max", "type": "quantitative", "title": "Max temperature (C)"},
+        "color": {"field": "weather", "type": "nominal"},
+        "size": {"field": "precipitation", "type": "quantitative"}
+      }
+    }
+  ]
+}

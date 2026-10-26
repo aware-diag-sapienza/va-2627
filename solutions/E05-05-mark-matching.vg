@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "line for a time series, bar for one value per category, point for two quantitative variables, bar of binned counts for a distribution (tick or boxplot are alternatives).",
+  "data": {
+    "url": "../data/penguins.csv",
+    "format": {
+        "parse": {
+            "culmen_length_mm": "number",
+            "culmen_depth_mm": "number",
+            "flipper_length_mm": "number",
+            "body_mass_g": "number"
+        }
+    }
+  },
+  "columns": 2,
+  "concat": [
+    {
+      "title": "Daily temperature over a month",
+      "width": 250,
+      "height": 150,
+      "data": {"url": "../data/seattle-weather.csv"},
+      "transform": [{"filter": "year(datum.date) == 2012 && month(datum.date) == 0"}],
+      "mark": "line",
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "temp_max", "type": "quantitative"}
+      }
+    },
+    {
+      "title": "Average fuel economy by origin",
+      "width": 250,
+      "height": 150,
+      "data": {"url": "../data/cars.json"},
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "Origin", "type": "nominal", "axis": {"labelAngle": 0}},
+        "y": {"aggregate": "mean", "field": "Miles_per_Gallon", "type": "quantitative"}
+      }
+    },
+    {
+      "title": "Flipper length vs body mass",
+      "width": 250,
+      "height": 150,
+      "mark": "point",
+      "encoding": {
+        "x": {"field": "flipper_length_mm", "type": "quantitative", "scale": {"zero": false}},
+        "y": {"field": "body_mass_g", "type": "quantitative", "scale": {"zero": false}}
+      }
+    },
+    {
+      "title": "Distribution of body mass",
+      "width": 250,
+      "height": 150,
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "body_mass_g", "type": "quantitative", "bin": true},
+        "y": {"aggregate": "count"}
+      }
+    }
+  ]
+}

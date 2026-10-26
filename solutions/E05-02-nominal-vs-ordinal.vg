@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "size_category is ordinal. The type alone does not order the bars (strings sort alphabetically): the explicit sort array does. The type changes the default color scheme.",
+  "width": 250,
+  "height": 200,
+  "data": {"values": [
+    {"size_category": "Small"}, {"size_category": "Small"}, {"size_category": "Small"},
+    {"size_category": "Small"}, {"size_category": "Small"},
+    {"size_category": "Medium"}, {"size_category": "Medium"}, {"size_category": "Medium"},
+    {"size_category": "Medium"},
+    {"size_category": "Large"}, {"size_category": "Large"}, {"size_category": "Large"}
+  ]},
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "size_category",
+      "type": "ordinal",
+      "sort": ["Small", "Medium", "Large"]
+    },
+    "y": {"aggregate": "count"},
+    "color": {
+      "field": "size_category",
+      "type": "ordinal",
+      "sort": ["Small", "Medium", "Large"]
+    }
+  }
+}

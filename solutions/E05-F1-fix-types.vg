@@ -1,0 +1,14 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Year is temporal (a date string, not an ordinal label); Horsepower is quantitative (a nominal size creates one legend entry per distinct value).",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "mark": {"type": "point", "filled": true, "opacity": 0.5},
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal"},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
+    "color": {"field": "Origin", "type": "nominal"},
+    "size": {"field": "Horsepower", "type": "quantitative"}
+  }
+}

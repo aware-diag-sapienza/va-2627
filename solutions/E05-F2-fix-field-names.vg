@@ -1,0 +1,23 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Three wrong names: culmen_length -> culmen_length_mm, Culmen_depth_mm -> culmen_depth_mm, Species -> species.",
+  "width": 300,
+  "height": 300,
+  "data": {
+    "url": "../data/penguins.csv",
+    "format": {
+        "parse": {
+            "culmen_length_mm": "number",
+            "culmen_depth_mm": "number",
+            "flipper_length_mm": "number",
+            "body_mass_g": "number"
+        }
+    }
+  },
+  "mark": {"type": "point", "filled": true},
+  "encoding": {
+    "x": {"field": "culmen_length_mm", "type": "quantitative", "scale": {"zero": false}},
+    "y": {"field": "culmen_depth_mm", "type": "quantitative", "scale": {"zero": false}},
+    "color": {"field": "species", "type": "nominal"}
+  }
+}

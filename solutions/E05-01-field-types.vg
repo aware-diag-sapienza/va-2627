@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "category: nominal, value: quantitative, date: temporal, rank: ordinal (an ordered label: differences between ranks are not meaningful).",
+  "width": 300,
+  "height": 300,
+  "data": {"values": [
+    {"category": "A", "value": 5.3, "date": "2022-03-01", "rank": 1},
+    {"category": "B", "value": 2.1, "date": "2022-03-02", "rank": 2},
+    {"category": "C", "value": 7.8, "date": "2022-03-03", "rank": 3},
+    {"category": "A", "value": 6.4, "date": "2022-03-04", "rank": 4},
+    {"category": "B", "value": 3.0, "date": "2022-03-05", "rank": 5},
+    {"category": "C", "value": 8.9, "date": "2022-03-06", "rank": 6}
+  ]},
+  "mark": {"type": "point", "filled": true, "size": 80},
+  "encoding": {
+    "x": {"field": "date", "type": "temporal"},
+    "y": {"field": "value", "type": "quantitative"},
+    "color": {"field": "category", "type": "nominal"},
+    "tooltip": [
+      {"field": "rank", "type": "ordinal"},
+      {"field": "value", "type": "quantitative"}
+    ]
+  }
+}

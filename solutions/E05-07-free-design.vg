@@ -1,0 +1,14 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Question: do critics and audiences agree, and does it depend on the MPAA rating? One possible answer among many.",
+  "width": 300,
+  "height": 300,
+  "data": {"url": "../data/movies.json"},
+  "mark": {"type": "circle", "opacity": 0.6},
+  "encoding": {
+    "x": {"field": "Rotten Tomatoes Rating", "type": "quantitative", "title": "Rotten Tomatoes (critics)"},
+    "y": {"field": "IMDB Rating", "type": "quantitative", "title": "IMDB (audience)"},
+    "size": {"field": "Production Budget", "type": "quantitative", "legend": {"format": "~s"}},
+    "color": {"field": "MPAA Rating", "type": "nominal"}
+  }
+}

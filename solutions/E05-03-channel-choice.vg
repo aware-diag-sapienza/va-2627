@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "year is an ordered, discrete label: ordinal in a column facet. Typing it quantitative would add decimal ticks (2018.5).",
+  "data": {"values": [
+    {"year": 2018, "region": "North", "sales": 120, "profitMargin": 0.23},
+    {"year": 2019, "region": "North", "sales": 135, "profitMargin": 0.25},
+    {"year": 2020, "region": "North", "sales": 110, "profitMargin": 0.18},
+    {"year": 2018, "region": "South", "sales": 90, "profitMargin": 0.13},
+    {"year": 2019, "region": "South", "sales": 105, "profitMargin": 0.15},
+    {"year": 2020, "region": "South", "sales": 95, "profitMargin": 0.12},
+    {"year": 2018, "region": "East", "sales": 150, "profitMargin": 0.28},
+    {"year": 2019, "region": "East", "sales": 160, "profitMargin": 0.30},
+    {"year": 2020, "region": "East", "sales": 170, "profitMargin": 0.31}
+  ]},
+  "width": 150,
+  "height": 200,
+  "mark": {"type": "point", "filled": true, "size": 100},
+  "encoding": {
+    "x": {"field": "sales", "type": "quantitative", "scale": {"zero": false}},
+    "y": {
+      "field": "profitMargin",
+      "type": "quantitative",
+      "scale": {"zero": false},
+      "axis": {"format": "%"}
+    },
+    "color": {"field": "region", "type": "nominal"},
+    "column": {"field": "year", "type": "ordinal"}
+  }
+}
