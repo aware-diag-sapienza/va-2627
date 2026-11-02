@@ -5,6 +5,7 @@
 | [`penguins.csv`](#penguinscsv-palmer-penguins) | 344 |
 | [`cars.json`](#carsjson) | 406 |
 | [`seattle-weather.csv`](#seattle-weathercsv) | 1461 |
+| [`movies.json`](#moviesjson) | 3201 |
 
 ## `penguins.csv` (Palmer Penguins)
 
@@ -16,8 +17,14 @@
 | `culmen_depth_mm` | quantitative | mm | 2 |
 | `flipper_length_mm` | quantitative | mm | 2 |
 | `body_mass_g` | quantitative | grams | 2 |
-| `sex` | nominal | MALE, FEMALE | 11 |
+| `sex` | nominal | male, female | 11 |
 | `year` | temporal | `yyyy`| 0 |
+
+Missing values are empty cells. Declare the numeric fields with `format.parse`: without it, an empty cell becomes a stray mark far outside the axes.
+
+```json
+"format": {"parse": {"body_mass_g": "number", "flipper_length_mm": "number"}}
+```
 
 ## cars.json
 
@@ -42,3 +49,23 @@
 | `temp_max`, `temp_min` | quantitative | Celsius |
 | `wind` | quantitative | m/s |
 | `weather` | nominal | drizzle (53), fog (101), rain (641), snow (26), sun (640) |
+
+## movies.json
+
+| Field | Type | Notes | Missing |
+|---|---|---|---|
+| `Title` | nominal | | 1 |
+| `US Gross`, `Worldwide Gross` | quantitative | US dollars | 7 |
+| `US DVD Sales` | quantitative | US dollars | 2637 |
+| `Production Budget` | quantitative | US dollars | 1 |
+| `Release Date` | temporal | not a standard format: `Jun 12 1998` | 0 |
+| `MPAA Rating` | nominal | | 605 |
+| `Running Time min` | quantitative | minutes | 1992 |
+| `Distributor` | nominal | | 232 |
+| `Source` | nominal | | 365 |
+| `Major Genre` | nominal | | 275 |
+| `Creative Type` | nominal | | 446 |
+| `Director` | nominal | | 1331 |
+| `Rotten Tomatoes Rating` | quantitative | 0-100 | 880 |
+| `IMDB Rating` | quantitative | 1-10 | 213 |
+| `IMDB Votes` | quantitative | | 213 |

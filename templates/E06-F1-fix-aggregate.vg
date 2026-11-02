@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "TODO: the chart should show the mean body mass of each island, from the heaviest to the lightest. The Vega Editor reports an error: read it, fix it, then check the order of the bars.",
+  "description": "TODO: the chart should show the mean body mass of each island, from the heaviest to the lightest. The runner reports a schema error: read it, fix it, then check the order of the bars.",
   "width": 300,
   "height": 250,
   "data": {"url": "../data/penguins.csv"},

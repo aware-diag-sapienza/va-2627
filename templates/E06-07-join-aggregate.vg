@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "TODO: for each car, compute how far its Miles_per_Gallon is from the mean of its Origin (joinAggregate + calculate) and show the deviations as one strip per origin.",
+  "description": "TODO: for each car, compute how far its Miles_per_Gallon is from the mean of its Origin (joinaggregate + calculate) and show the deviations as one strip per origin.",
   "width": 400,
   "height": 150,
   "data": {"url": "../data/cars.json"},

@@ -3,6 +3,16 @@
   "description": "TODO: pick ONE question about the penguins, write the encoding plan (field -> type -> channel), then build the chart.",
   "width": 300,
   "height": 300,
-  "data": {"url": "../data/penguins.csv"},
+  "data": {
+    "url": "../data/penguins.csv",
+    "format": {
+        "parse": {
+            "culmen_length_mm": "number",
+            "culmen_depth_mm": "number",
+            "flipper_length_mm": "number",
+            "body_mass_g": "number"
+        }
+    }
+  },
   "mark": "point"
 }

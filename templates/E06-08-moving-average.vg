@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "TODO (optional): the daily maximum temperature is noisy. Add a line with the 31-day moving average (window transform, frame [-15, 15]) on top of the points.",
+  "description": "TODO: the daily maximum temperature is noisy. Add a line with the 31-day moving average (window transform, frame [-15, 15]) on top of the points.",
   "width": 600,
   "height": 250,
   "data": {"url": "../data/seattle-weather.csv"},

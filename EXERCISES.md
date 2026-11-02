@@ -161,9 +161,9 @@
 
 ---
 
-# P06 - Data transformation
+## P06 - Data transformations
 
-## E06-01 - Histogram bins
+### E06-01 - Histogram bins
 
 **Goal.** Build a histogram and see the effect of the bin size.
 
@@ -175,7 +175,7 @@
 
 ![expected](expected/E06-01-histogram-bins.svg)
 
-## E06-02 - Temporal aggregation
+### E06-02 - Temporal aggregation
 
 **Goal.** Mean maximum temperature (`temp_max`) of each month, for each weather type.
 
@@ -189,7 +189,7 @@
 
 ![expected](expected/E06-02-temporal-aggregation.svg)
 
-## E06-03 - Derived field
+### E06-03 - Derived field
 
 **Goal.** Power-to-weight ratio against fuel economy.
 
@@ -201,7 +201,7 @@
 
 ![expected](expected/E06-03-derived-field.svg)
 
-## E06-04 - Top-N ranking
+### E06-04 - Top-N ranking
 
 **Goal.** Bar chart of the mean Rotten Tomatoes rating of the top 10 genres, in descending order.
 
@@ -214,7 +214,7 @@
 
 ![expected](expected/E06-04-top-n-ranking.svg)
 
-## E06-05 - Two ways
+### E06-05 - Two ways
 
 **Goal.** Number of rainy and sunny days per month, built in two ways that must give the same numbers.
 
@@ -225,7 +225,7 @@
 
 ![expected](expected/E06-05-two-ways.svg)
 
-## E06-06 - Stack and sort
+### E06-06 - Stack and sort
 
 **Goal.** Species composition of each island as 100% stacked bars, islands sorted by size.
 
@@ -236,7 +236,7 @@
 
 ![expected](expected/E06-06-stack-and-sort.svg)
 
-## E06-07 - Join aggregate
+### E06-07 - Join aggregate
 
 **Goal.** How far is each car from the average of its origin?
 
@@ -248,7 +248,7 @@
 
 ![expected](expected/E06-07-join-aggregate.svg)
 
-## E06-08 - Moving average
+### E06-08 - Moving average
 
 **Goal.** Reveal the seasonal trend under the noisy daily values.
 
@@ -259,22 +259,22 @@
 
 ![expected](expected/E06-08-moving-average.svg)
 
-## E06-F1 - Fix the aggregate
+### E06-F1 - Fix the aggregate
 
 **Goal.** Read a schema error and fix a chart that is wrong even after it renders.
 
-1. The Vega Editor reports an error. Write what it says and what it means.
+1. The runner (and the Vega Editor) reports a schema error. Write what it says and what it means.
 2. Fix it. The chart should show mean body mass per island, from heaviest to lightest: is the order right?
 
 **Check yourself.** What does `"sort": "descending"` actually sort?
 
 ![expected](expected/E06-F1-fix-aggregate.svg)
 
-## E06-F2 - Fix the empty chart
+### E06-F2 - Fix the empty chart
 
 **Goal.** Debug a transform pipeline step by step.
 
-1. The chart is empty. Comment out the `transform` entries one by one from the bottom: when does data appear?
+1. The chart is empty. Remove the `transform` entries one at a time, putting each one back: does a single removal bring the marks back? Why not?
 2. Fix **two** problems.
 
 **Check yourself.** What is the value of a field that does not exist yet, and how does a comparison with it evaluate?

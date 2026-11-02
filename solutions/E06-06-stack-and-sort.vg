@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "stack: normalize turns counts into shares; sort: \"-y\" orders by the (total) value, unlike sort: \"descending\" which orders the labels alphabetically.",
+  "description": "stack: normalize turns counts into shares; sort: \"-y\" orders by the (total) value, unlike sort: \"descending\" which orders the labels alphabetically. Here the islands happen to be alphabetical by size too: sort: \"descending\" is what shows the difference.",
   "width": 300,
   "height": 300,
   "data": {"url": "../data/penguins.csv"},
