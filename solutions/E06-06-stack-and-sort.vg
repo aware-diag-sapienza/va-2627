@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "stack: normalize turns counts into shares; sort: \"-y\" orders by the (total) value, unlike sort: \"descending\" which orders the labels alphabetically.",
+  "width": 300,
+  "height": 300,
+  "data": {"url": "../data/penguins.csv"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "island", "type": "nominal", "sort": "-y"},
+    "y": {"aggregate": "count", "stack": "normalize", "axis": {"format": "%"}, "title": "Share of penguins"},
+    "color": {"field": "species", "type": "nominal"}
+  }
+}

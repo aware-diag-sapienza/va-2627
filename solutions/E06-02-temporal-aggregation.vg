@@ -1,0 +1,14 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Stacking means adds them up (a meaningless total); grouped bars compare them. timeUnit month pools the same month across the four years.",
+  "width": 600,
+  "height": 250,
+  "data": {"url": "../data/seattle-weather.csv"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "date", "timeUnit": "month", "type": "ordinal", "title": "Month"},
+    "xOffset": {"field": "weather", "type": "nominal"},
+    "y": {"aggregate": "mean", "field": "temp_max", "type": "quantitative", "title": "Mean max temperature (C)"},
+    "color": {"field": "weather", "type": "nominal"}
+  }
+}

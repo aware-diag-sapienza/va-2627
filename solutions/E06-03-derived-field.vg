@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Filter missing values first, then derive the field, then encode it. Name derived fields with `as`.",
+  "width": 350,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "transform": [
+    {"filter": "datum.Horsepower != null && datum.Weight_in_lbs != null"},
+    {"calculate": "datum.Horsepower / datum.Weight_in_lbs * 1000", "as": "hp_per_1000lb"}
+  ],
+  "mark": {"type": "point", "opacity": 0.6},
+  "encoding": {
+    "x": {
+      "field": "hp_per_1000lb",
+      "type": "quantitative",
+      "title": "Horsepower per 1000 lbs",
+      "scale": {"zero": false}
+    },
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative", "title": "Miles per gallon"},
+    "color": {"field": "Origin", "type": "nominal"}
+  }
+}

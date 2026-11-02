@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Pipeline: filter nulls -> aggregate (mean and count of valid ratings) -> filter small groups -> rank -> keep top 10.",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "../data/movies.json"},
+  "transform": [
+    {"filter": "datum['Major Genre'] != null"},
+    {
+      "aggregate": [
+        {"op": "mean", "field": "Rotten Tomatoes Rating", "as": "avg_rating"},
+        {"op": "valid", "field": "Rotten Tomatoes Rating", "as": "n_rated"}
+      ],
+      "groupby": ["Major Genre"]
+    },
+    {"filter": "datum.n_rated >= 20"},
+    {"window": [{"op": "rank", "as": "rank"}], "sort": [{"field": "avg_rating", "order": "descending"}]},
+    {"filter": "datum.rank <= 10"},
+    {"calculate": "datum['Major Genre'] + ' (n=' + datum.n_rated + ')'", "as": "genre_label"}
+  ],
+  "mark": "bar",
+  "encoding": {
+    "y": {"field": "genre_label", "type": "nominal", "sort": "-x", "title": "Genre (rated movies)", "axis": {"labelLimit": 250}},
+    "x": {"field": "avg_rating", "type": "quantitative", "title": "Mean Rotten Tomatoes rating"}
+  }
+}

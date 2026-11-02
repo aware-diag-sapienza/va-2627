@@ -1,0 +1,12 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "`avg` is not a Vega-Lite operator: use `mean` (`average` is accepted as an alias). `sort: descending` orders the labels alphabetically; `-y` orders by the aggregated value.",
+  "width": 300,
+  "height": 250,
+  "data": {"url": "../data/penguins.csv"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "island", "type": "nominal", "sort": "-y"},
+    "y": {"field": "body_mass_g", "type": "quantitative", "aggregate": "mean", "title": "Mean body mass (g)"}
+  }
+}

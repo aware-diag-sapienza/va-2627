@@ -1,0 +1,17 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Transforms run in order: derive precip_per_degree before filtering on it. String comparison is case-sensitive: 'rain', not 'Rain'.",
+  "width": 500,
+  "height": 250,
+  "data": {"url": "../data/seattle-weather.csv"},
+  "transform": [
+    {"calculate": "datum.precipitation / datum.temp_max", "as": "precip_per_degree"},
+    {"filter": "datum.precip_per_degree > 0.1"},
+    {"filter": "datum.weather == 'rain'"}
+  ],
+  "mark": {"type": "circle", "opacity": 0.7},
+  "encoding": {
+    "x": {"field": "date", "type": "temporal"},
+    "y": {"field": "precip_per_degree", "type": "quantitative", "title": "Precipitation per degree"}
+  }
+}

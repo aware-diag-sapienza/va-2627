@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "The window transform needs an explicit sort; the frame is centered on each day.",
+  "width": 600,
+  "height": 250,
+  "data": {"url": "../data/seattle-weather.csv"},
+  "layer": [
+    {
+      "mark": {"type": "point", "opacity": 0.3},
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "temp_max", "type": "quantitative", "title": "Max temperature (C)"}
+      }
+    },
+    {
+      "transform": [
+        {
+          "window": [{"op": "mean", "field": "temp_max", "as": "rolling_mean"}],
+          "frame": [-15, 15],
+          "sort": [{"field": "date"}]
+        }
+      ],
+      "mark": {"type": "line", "color": "firebrick", "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "rolling_mean", "type": "quantitative"}
+      }
+    }
+  ]
+}

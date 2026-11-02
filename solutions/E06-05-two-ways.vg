@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "A and B give the same counts. `filter` is always a view-level transform; A then relies on inline timeUnit/aggregate, B spells out every step.",
+  "data": {"url": "../data/seattle-weather.csv"},
+  "vconcat": [
+    {
+      "title": "A: field-level transforms",
+      "width": 500,
+      "height": 150,
+      "transform": [{"filter": "datum.weather == 'rain' || datum.weather == 'sun'"}],
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "date", "timeUnit": "month", "type": "ordinal", "title": "Month"},
+        "xOffset": {"field": "weather", "type": "nominal"},
+        "y": {"aggregate": "count", "title": "Days"},
+        "color": {"field": "weather", "type": "nominal"}
+      }
+    },
+    {
+      "title": "B: view-level transforms",
+      "width": 500,
+      "height": 150,
+      "transform": [
+        {"filter": "datum.weather == 'rain' || datum.weather == 'sun'"},
+        {"calculate": "month(datum.date) + 1", "as": "month_number"},
+        {
+          "aggregate": [{"op": "count", "as": "days"}],
+          "groupby": ["month_number", "weather"]
+        }
+      ],
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "month_number", "type": "ordinal", "title": "Month number", "axis": {"labelAngle": 0}},
+        "xOffset": {"field": "weather", "type": "nominal"},
+        "y": {"field": "days", "type": "quantitative", "title": "Days"},
+        "color": {"field": "weather", "type": "nominal"}
+      }
+    }
+  ]
+}
