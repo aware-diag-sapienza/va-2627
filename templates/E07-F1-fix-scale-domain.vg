@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: both charts mislead because of their scales. Find the problem in each one and fix it. Left: are all the cars inside the axes? Right: how different are the origins really?",
+  "data": {"url": "../data/cars.json"},
+  "hconcat": [
+    {
+      "title": "Horsepower vs MPG",
+      "width": 250,
+      "height": 250,
+      "mark": "point",
+      "encoding": {
+        "x": {"field": "Horsepower", "type": "quantitative", "scale": {"domain": [40, 120]}},
+        "y": {"field": "Miles_per_Gallon", "type": "quantitative"}
+      }
+    },
+    {
+      "title": "Mean MPG by origin",
+      "width": 250,
+      "height": 250,
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "Origin", "type": "nominal", "axis": {"labelAngle": 0}},
+        "y": {
+          "aggregate": "mean",
+          "field": "Miles_per_Gallon",
+          "type": "quantitative",
+          "scale": {"domain": [18, 32]}
+        }
+      }
+    }
+  ]
+}

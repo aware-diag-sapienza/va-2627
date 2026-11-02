@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: customize the legend: place it at the bottom, give it a custom title and larger symbols. Hint: `symbolSize` has no effect on a gradient legend, so check the type of Cylinders first.",
+  "width": 350,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative"},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
+    "color": {"field": "Cylinders", "type": "quantitative"}
+  }
+}

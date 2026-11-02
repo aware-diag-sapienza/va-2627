@@ -1,0 +1,15 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: the number of cars per year for each origin. Can the panels be compared? Find the cause, restore comparability, and remove the redundant legend.",
+  "data": {"url": "../data/cars.json"},
+  "resolve": {"scale": {"y": "independent"}},
+  "width": 400,
+  "height": 90,
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Year", "timeUnit": "year", "type": "ordinal", "title": "Year"},
+    "y": {"aggregate": "count", "title": "Cars"},
+    "color": {"field": "Origin", "type": "nominal"},
+    "row": {"field": "Origin", "type": "nominal"}
+  }
+}

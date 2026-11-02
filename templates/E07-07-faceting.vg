@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: one small bar chart per Origin showing the number of cars per year, stacked vertically, with the same x axis (year). Use the `row` channel. Then make the y scales independent (`resolve`) and explain what changes in interpretation.",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Year", "timeUnit": "year", "type": "ordinal"},
+    "y": {"aggregate": "count"},
+    "color": {"field": "Origin", "type": "nominal"}
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: build a mini-dashboard with nested composition. Left: this scatter plot. Right (stacked vertically): a histogram of body_mass_g stacked by species, and a layered chart with bars of the mean body_mass_g per species plus a text label with the value. One shared color legend for species.",
+  "width": 300,
+  "height": 300,
+  "data": {
+    "url": "../data/penguins.csv",
+    "format": {"parse": {"flipper_length_mm": "number", "body_mass_g": "number"}}
+  },
+  "mark": {"type": "point", "filled": true, "opacity": 0.7},
+  "encoding": {
+    "x": {"field": "flipper_length_mm", "type": "quantitative", "scale": {"zero": false}},
+    "y": {"field": "body_mass_g", "type": "quantitative", "scale": {"zero": false}},
+    "color": {"field": "species", "type": "nominal"}
+  }
+}

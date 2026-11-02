@@ -1,0 +1,12 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: a grid of scatter plots of Horsepower, Acceleration and Miles_per_Gallon (every pair). Use `repeat` with row and column. Color by Origin. What does the diagonal show?",
+  "width": 200,
+  "height": 200,
+  "data": {"url": "../data/cars.json"},
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative"},
+    "y": {"field": "Acceleration", "type": "quantitative"}
+  }
+}

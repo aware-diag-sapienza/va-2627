@@ -1,0 +1,12 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: rename both axis titles to something descriptive, rotate the x labels to horizontal and show the gridlines.",
+  "width": 300,
+  "height": 250,
+  "data": {"url": "../data/cars.json"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Origin", "type": "nominal"},
+    "y": {"aggregate": "mean", "field": "Miles_per_Gallon", "type": "quantitative"}
+  }
+}

@@ -25,6 +25,18 @@
 | [E06-08](#e06-08---moving-average) | Moving average | window |
 | [E06-F1](#e06-f1---fix-the-aggregate) | Fix the aggregate | schema errors, sort |
 | [E06-F2](#e06-f2---fix-the-empty-chart) | Fix the empty chart | transform order |
+| [E07-01](#e07-01---scale-domain) | Scale domain | scale |
+| [E07-02](#e07-02---axes) | Axes | axis |
+| [E07-03](#e07-03---legends) | Legends | legend |
+| [E07-04](#e07-04---color-scale) | Color scale | color |
+| [E07-05](#e07-05---layering) | Layering | layer |
+| [E07-05B](#e07-05b---layering-per-origin) | Layering per origin (stretch) | layer, aggregate |
+| [E07-06](#e07-06---concatenation) | Concatenation | concat, resolve |
+| [E07-07](#e07-07---faceting) | Faceting | facet, resolve |
+| [E07-08](#e07-08---repeat-splom) | Repeat (SPLOM) | repeat |
+| [E07-09](#e07-09---dashboard) | Dashboard (stretch) | composition tree |
+| [E07-F1](#e07-f1---fix-the-scale-domain) | Fix the scale domain | scale |
+| [E07-F2](#e07-f2---fix-the-independent-scales) | Fix the independent scales | resolve |
 
 ---
 
@@ -282,3 +294,140 @@
 ![expected](expected/E06-F2-fix-empty-chart.svg)
 
 ---
+
+## P07 - Guides and composition
+
+### E07-01 - Scale domain
+
+**Goal.** Control the domain of a scale.
+
+1. Scatter plot `Horsepower` x `Miles_per_Gallon`. The x axis must start at 40 and the y axis end at 47.
+2. **Part B.** In a second chart use a logarithmic x scale.
+
+**Check yourself.** When is a log scale justified? Does it "remove outliers"?
+
+![expected](expected/E07-01-scale-domain.svg)
+
+### E07-02 - Axes
+
+**Goal.** Customize the axes of a bar chart of the mean MPG per origin.
+
+1. Rename both axis titles to something descriptive (with the unit).
+2. Make the x labels horizontal.
+3. Show the gridlines.
+
+**Check yourself.** Is `labelAngle: 90` horizontal or vertical?
+
+![expected](expected/E07-02-axes.svg)
+
+### E07-03 - Legends
+
+**Goal.** Customize a legend.
+
+1. Move the legend to the bottom, give it a custom title and larger symbols.
+2. If `symbolSize` has no effect, find out why.
+
+**Check yourself.** What is the difference between a symbol legend and a gradient legend, and what decides which one you get?
+
+![expected](expected/E07-03-legends.svg)
+
+### E07-04 - Color scale
+
+**Goal.** Color bars by their value with a continuous scale (blue = cold, red = hot).
+
+1. Add a `color` channel with the mean `temp_max`.
+2. Choose a `scheme` (and `reverse` if needed). The legend must be a gradient.
+3. Try a red-green scheme. Why is it a bad choice?
+
+**Check yourself.** The bar height and the color encode the same value: is that redundant? When is it useful?
+
+![expected](expected/E07-04-color-scale.svg)
+
+### E07-05 - Layering
+
+**Goal.** Points of the individual cars and the mean MPG per year in the same coordinate system.
+
+1. Keep the point layer (color = `Origin`).
+2. Add a line layer with the mean `Miles_per_Gallon` by `Year`.
+
+**Check yourself.** Do the two layers share the scales? Where do you see it?
+
+![expected](expected/E07-05-layering.svg)
+
+### E07-05B - Layering per origin
+
+**Goal (stretch).** One line per `Origin` instead of a single mean line, using the colors of the points.
+
+**Check yourself.** What makes the aggregation be computed per origin?
+
+![expected](expected/E07-05B-layering-per-origin.svg)
+
+### E07-06 - Concatenation
+
+**Goal.** A scatter plot with a histogram of Horsepower on top, in one figure, with aligned Horsepower axes.
+
+1. `vconcat` the histogram and the scatter plot.
+2. Use the same width and share the x scale (`resolve`).
+3. Hide the redundant x axis of the histogram.
+
+**Check yourself.** What happens to the alignment if you remove the `resolve`?
+
+![expected](expected/E07-06-concatenation.svg)
+
+### E07-07 - Faceting
+
+**Goal.** Number of cars per year for each origin, one small chart per origin, same x axis.
+
+1. Add the `row` channel.
+2. Remove the legend that became redundant.
+3. Make the y scales independent (`resolve`). What changes in the interpretation?
+
+**Check yourself.** When are shared scales required, and when do independent ones help?
+
+![expected](expected/E07-07-faceting.svg)
+
+### E07-08 - Repeat (SPLOM)
+
+**Goal.** Grid of scatter plots for `Horsepower`, `Acceleration` and `Miles_per_Gallon`.
+
+1. Use `repeat` with `row` and `column`, and `{"repeat": ...}` in the encodings.
+2. Color by `Origin`.
+
+**Check yourself.** What do the diagonal plots show? What would be better there?
+
+![expected](expected/E07-08-repeat-splom.svg)
+
+### E07-09 - Dashboard
+
+**Goal (stretch).** Nested composition (`penguins.csv`).
+
+- Left: the scatter plot of the template.
+- Right, stacked: a histogram of `body_mass_g` stacked by species; a layered chart (bars of the mean `body_mass_g` plus a text label with the value).
+- One shared color legend for `species`.
+
+**Check yourself.** Sketch the composition tree (`hconcat` > ...). Which scales are shared and which are independent by default?
+
+![expected](expected/E07-09-dashboard.svg)
+
+### E07-F1 - Fix the scale domain
+
+**Goal.** Two charts mislead through their scales.
+
+1. Left: how many cars fall outside the axis, and where do they end up? Count them in the data.
+2. Right: what is wrong with the bar lengths? Compute the real ratio between the two tallest bars.
+3. Fix both.
+
+**Check yourself.** Why can a truncated axis be acceptable for points but not for bars?
+
+![expected](expected/E07-F1-fix-scale-domain.svg)
+
+### E07-F2 - Fix the independent scales
+
+**Goal.** Restore comparability between panels.
+
+1. Compare the heights of the bars of the USA and Europe panels: what do you conclude? Is it true?
+2. Find the cause, fix it, and remove the redundant legend.
+
+**Check yourself.** Give one case where independent scales are the right choice.
+
+![expected](expected/E07-F2-fix-independent-scales.svg)

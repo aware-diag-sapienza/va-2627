@@ -1,0 +1,17 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: add a second layer with a line of the mean Miles_per_Gallon by year, in the same coordinate system as the points.",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "layer": [
+    {
+      "mark": "point",
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
+        "color": {"field": "Origin", "type": "nominal"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: color each bar by its mean maximum temperature with a continuous scale (blue = cold, red = hot) and make sure the legend is a gradient. Is a red-green scale a good alternative? Why not?",
+  "width": 500,
+  "height": 250,
+  "data": {"url": "../data/seattle-weather.csv"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "date", "timeUnit": "month", "type": "ordinal", "title": "Month"},
+    "y": {"aggregate": "mean", "field": "temp_max", "type": "quantitative", "title": "Mean max temperature (C)"}
+  }
+}
