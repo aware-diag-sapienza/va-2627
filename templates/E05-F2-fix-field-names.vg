@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "TODO: the chart is empty and no error is shown. Open the data (data/penguins.json), compare the field names, and fix the spec. Field names are case-sensitive.",
+  "description": "TODO: the chart is empty and no error is shown. Open the data (data/penguins.csv), compare the field names, and fix the spec. Field names are case-sensitive.",
   "width": 300,
   "height": 300,
   "data": {"url": "../data/penguins.csv"},
