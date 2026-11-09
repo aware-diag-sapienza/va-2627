@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: the brush should color the points and filter the bars, but the spec does not render. The error reports one wrong name at a time: find both (hint: param names), write the diagnosis, then fix them.",
+  "data": {"url": "../data/cars.json"},
+  "vconcat": [
+    {
+      "width": 400,
+      "height": 250,
+      "params": [{"name": "brush", "select": {"type": "interval"}}],
+      "mark": "point",
+      "encoding": {
+        "x": {"field": "Horsepower", "type": "quantitative"},
+        "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
+        "color": {
+          "condition": {"param": "brushed", "field": "Origin", "type": "nominal"},
+          "value": "lightgray"
+        }
+      }
+    },
+    {
+      "width": 400,
+      "height": 100,
+      "transform": [{"filter": {"param": "brush_area"}}],
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "Origin", "type": "nominal", "axis": {"labelAngle": 0}},
+        "y": {"aggregate": "count", "title": "Cars"},
+        "color": {"field": "Origin", "type": "nominal"}
+      }
+    }
+  ]
+}

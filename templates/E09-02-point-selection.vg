@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: add a point selection `params` so that clicking a point, or a legend entry, highlights all cars of the same Origin and dims the others. Use a conditional encoding on opacity.",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "mark": {"type": "point", "filled": true, "size": 60},
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative"},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
+    "color": {"field": "Origin", "type": "nominal"}
+  }
+}

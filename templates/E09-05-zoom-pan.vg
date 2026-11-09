@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: make the scatter plot zoomable and pannable with an interval selection bound to the scales (mouse wheel and drag). Connect it to D3: d3.zoom does the same thing by hand.",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "mark": {"type": "point", "filled": true},
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative", "scale": {"zero": false}},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative", "scale": {"zero": false}},
+    "color": {"field": "Origin", "type": "nominal"}
+  }
+}

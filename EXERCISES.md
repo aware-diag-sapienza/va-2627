@@ -37,6 +37,14 @@
 | [E07-09](#e07-09---dashboard) | Dashboard (stretch) | composition tree |
 | [E07-F1](#e07-f1---fix-the-scale-domain) | Fix the scale domain | scale |
 | [E07-F2](#e07-f2---fix-the-independent-scales) | Fix the independent scales | resolve |
+| [E09-01](#e09-01---tooltips) | Tooltips | tooltip |
+| [E09-02](#e09-02---point-selection) | Point selection | params, condition |
+| [E09-03](#e09-03---linked-brush) | Linked brush | interval, filter |
+| [E09-04](#e09-04---input-widgets) | Input widgets | bind |
+| [E09-05](#e09-05---zoom-and-pan) | Zoom and pan | bind scales |
+| [E09-06](#e09-06---overview-and-detail) | Overview and detail | scale domain |
+| [E09-07](#e09-07---compile-path) | Compile path | Vega-Lite to Vega |
+| [E09-F1](#e09-f1---fix-the-selection) | Fix the selection | params |
 
 ---
 
@@ -431,3 +439,99 @@
 **Check yourself.** Give one case where independent scales are the right choice.
 
 ![expected](expected/E07-F2-fix-independent-scales.svg)
+
+---
+
+## P09 - Interaction
+
+The runner draws the initial state only: no click, no brush. To try the interaction, paste the spec into the [Vega Editor](https://vega.github.io/editor/) and change `../data/` into `data/`: the editor hosts its own copy of `cars.json` and `seattle-weather.csv`, identical to ours. Keep the runner for errors and mark counts.
+
+### E09-01 - Tooltips
+
+**Goal.** Details on demand.
+
+1. Show all fields with `tooltip: true` on the mark.
+2. Replace it with a `tooltip` encoding: car name, origin, horsepower and MPG, with titles and formats.
+
+**Check yourself.** Which version is better for the reader, and why?
+
+![expected](expected/E09-01-tooltips.svg)
+
+### E09-02 - Point selection
+
+**Goal.** Highlight one origin by clicking.
+
+1. Add a `params` entry with a `point` selection on the field `Origin`.
+2. Use a conditional `opacity` (selected = 1, otherwise 0.1).
+3. Bind the selection to the legend (`bind: "legend"`).
+
+**Check yourself.** What is selected when nothing has been clicked yet? How do you select two origins? What does `"empty": false` in the condition change?
+
+![expected](expected/E09-02-point-selection.svg)
+
+### E09-03 - Linked brush
+
+**Goal.** Coordinated views.
+
+1. Add an `interval` selection to the scatter plot.
+2. Color the brushed cars in the scatter plot, grey the others.
+3. Make the bar chart count only the brushed cars (`transform` > `filter` > `param`).
+
+**Check yourself.** Why should the scatter plot not filter itself with its own brush?
+
+![expected](expected/E09-03-linked-brush.svg)
+
+### E09-04 - Input widgets
+
+**Goal.** Drive a chart with HTML inputs.
+
+1. A range slider for the minimum horsepower.
+2. A dropdown for the origin, with an "All" option.
+3. Use both in `filter` expressions.
+
+**Check yourself.** Why are the scale domains fixed in the template?
+
+![expected](expected/E09-04-input-widgets.svg)
+
+### E09-05 - Zoom and pan
+
+**Goal.** Zoom with the mouse wheel and pan by dragging, with one line of spec.
+
+**Check yourself.** What is the selection actually storing? (Compare with `d3.zoom` in the D3 lectures.)
+
+![expected](expected/E09-05-zoom-pan.svg)
+
+### E09-06 - Overview and detail
+
+**Goal.** Brush the small overview chart to zoom the detail chart.
+
+1. An x-only `interval` selection in the overview.
+2. Use the parameter as `scale.domain` of the detail chart.
+
+**Check yourself.** Which view owns the param and which one reads it?
+
+![expected](expected/E09-06-overview-detail.svg)
+
+### E09-07 - Compile path
+
+**Goal.** See what Vega-Lite generates: Vega-Lite compiles to Vega, which is built on D3 modules.
+
+1. Print the compiled Vega: `npm run new E09-07`, then `npm run compile E09-07` (or open the compiled Vega in the Vega Editor).
+2. Locate `data`, `scales`, `axes`, `legends` and `marks`. Which scale types and domains were chosen for you?
+3. Add `"transform": [{"filter": "datum.Cylinders > 4"}]`. Find what changed.
+4. Change `point` to `line`: which parts of the Vega changed?
+
+**Check yourself.** Which D3 functions would you call to draw the same chart? (Preview of the D3 lectures.)
+
+![expected](expected/E09-07-compile-path.svg)
+
+### E09-F1 - Fix the selection
+
+**Goal.** Diagnose a broken interaction.
+
+1. Render it: the error names one wrong reference. Fix it, render again, and find the second.
+2. Write the diagnosis in two sentences, then fix the spec.
+
+**Check yourself.** Which view owns the param, and which view only reads it?
+
+![expected](expected/E09-F1-fix-selection.svg)

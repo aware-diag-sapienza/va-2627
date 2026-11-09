@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: add a tooltip that shows the car name, origin, horsepower and MPG (formatted). Two ways: `tooltip: true` on the mark (all fields) or a `tooltip` encoding (chosen fields).",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "mark": {"type": "point", "filled": true},
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative"},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
+    "color": {"field": "Origin", "type": "nominal"}
+  }
+}

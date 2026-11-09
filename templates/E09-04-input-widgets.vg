@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: add two input widgets with `params` and `bind`: a range slider for the minimum horsepower and a dropdown to choose an origin (or all). Use the parameters in `transform: filter` expressions.",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "../data/cars.json"},
+  "mark": {"type": "point", "filled": true},
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative", "scale": {"domain": [40, 240]}},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative", "scale": {"domain": [5, 50]}},
+    "color": {"field": "Origin", "type": "nominal"}
+  }
+}

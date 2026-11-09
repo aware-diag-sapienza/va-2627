@@ -1,0 +1,13 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: print the compiled Vega (npm run compile E09-07, or the Vega Editor). 1) Locate data, scales, axes, legends and marks. 2) Add `transform: [{filter: \"datum.Cylinders > 4\"}]` and find what changes in the Vega. 3) Change `point` to `line`: which parts of the Vega change?",
+  "width": 300,
+  "height": 250,
+  "data": {"url": "../data/cars.json"},
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative"},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
+    "color": {"field": "Origin", "type": "nominal"}
+  }
+}

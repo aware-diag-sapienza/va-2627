@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: link the two views. Brushing a rectangle in the scatter plot (interval selection) must (1) color the brushed cars in the scatter plot and (2) update the bar chart so it counts only the brushed cars. Hint: `params` in the scatter plot, `transform: filter: {param}` in the bar chart.",
+  "data": {"url": "../data/cars.json"},
+  "vconcat": [
+    {
+      "width": 400,
+      "height": 250,
+      "mark": "point",
+      "encoding": {
+        "x": {"field": "Horsepower", "type": "quantitative"},
+        "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
+        "color": {"field": "Origin", "type": "nominal"}
+      }
+    },
+    {
+      "width": 400,
+      "height": 100,
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "Origin", "type": "nominal", "axis": {"labelAngle": 0}},
+        "y": {"aggregate": "count", "title": "Cars"},
+        "color": {"field": "Origin", "type": "nominal"}
+      }
+    }
+  ]
+}

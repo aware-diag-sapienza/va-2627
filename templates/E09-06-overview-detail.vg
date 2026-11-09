@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "TODO: overview + detail. The small chart at the bottom shows the whole time series and holds an x-only brush. The big chart on top must zoom to the brushed time range (`scale.domain` bound to the param).",
+  "data": {"url": "../data/seattle-weather.csv"},
+  "vconcat": [
+    {
+      "width": 600,
+      "height": 250,
+      "mark": "line",
+      "encoding": {
+        "x": {"field": "date", "type": "temporal", "title": null},
+        "y": {"field": "temp_max", "type": "quantitative", "title": "Max temperature (C)"}
+      }
+    },
+    {
+      "width": 600,
+      "height": 60,
+      "mark": "area",
+      "encoding": {
+        "x": {"field": "date", "type": "temporal", "title": null, "axis": {"tickCount": "year"}},
+        "y": {"field": "temp_max", "type": "quantitative", "title": null, "axis": {"tickCount": 3}}
+      }
+    }
+  ]
+}
